@@ -13,30 +13,24 @@
                 ItemsSource="{Binding Items}">
                 
                 <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Label
-            Text="Binding Title"
-             FontSize="20"
-             Padding="10"/>
-                </DataTemplate>
                     <DataTemplate>
-                        <Label
-              Text="{Binding Price}"
-              FontSize="14"
-              Padding="10"/>
+                        <VerticalStackLayout>
+                            <Label
+                                Text="{Binding Title}"
+                                FontSize="20"
+                                Padding="10"/>
+                            <Label
+                                Text="{Binding Price}"
+                                FontSize="14"
+                                Padding="10"/>
+                            <Image
+                                Source="{Binding Image}"
+                                HeightRequest="200"
+                                WidthRequest="200"/>
+                        </VerticalStackLayout>
                     </DataTemplate>
-                    <DataTemplate>
-                        <Image
-                        Source="{Binding Image}"
-                        HeightRequest="200"
-                        WidthRequest="200"/>
-                    </DataTemplate>
-            </CollectionView.ItemTemplate>
+                </CollectionView.ItemTemplate>
             </CollectionView>
-
-            
-
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>
