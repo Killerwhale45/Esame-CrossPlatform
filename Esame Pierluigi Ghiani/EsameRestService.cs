@@ -1,9 +1,13 @@
 
+using Esame_Pierluigi_Ghiani;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 public class RestService
 
 {
-    private readonly HttpClient
-        private readonly JsonSeralizerOptions _jsonOptions;
+    private readonly HttpClient _httpClient;
+    private readonly JsonSerializerOptions _jsonOptions;
 
     public RestService()
     {
@@ -19,7 +23,7 @@ public class RestService
         };
     }
 
-    public async Task<List<Prdoduct>> GetProductsAsync()
+    public async Task<List<Product>> GetProductsAsync()
     {
         var response = await _httpClient.GetAsync("products");
         response.EnsureSuccessStatusCode();
