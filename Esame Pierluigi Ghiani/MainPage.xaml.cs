@@ -1,4 +1,5 @@
 ﻿using Microsoft.Maui.Controls;
+using System.Collections.ObjectModel;
 
 namespace Esame_Pierluigi_Ghiani
 {
@@ -6,20 +7,22 @@ namespace Esame_Pierluigi_Ghiani
     {
         int count = 0;
         RestService service;
-        List<Product> Items;
+        public ObservableCollection<Product> Items { get; set; }
 
         public MainPage()
         {
             InitializeComponent();
             service = new RestService();
+            Items = new ObservableCollection<Product>();
             BindingContext = this;
+            LoadProducts();
         }
 
-        protected async void OnNavigatedTo(Object sender, NavigatedToEventArgs args)
+        private async void LoadProducts()
         {
-            base.OnNavigatedTo(args);
             var products = await service.GetProductsAsync();
-            foreach(var p in products)
+            Items.Clear();
+            foreach (var p in products)
             {
                 Items.Add(p);
             }
@@ -37,9 +40,8 @@ namespace Esame_Pierluigi_Ghiani
 
         private async void OnCounterClicked(object sender, EventArgs e)
         {
-            var service = new RestService();
             var products = await service.GetProductsAsync();
+            // Puoi gestire i prodotti qui come preferisci
         }
-
     }
 }
