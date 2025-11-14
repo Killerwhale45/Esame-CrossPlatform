@@ -12,6 +12,11 @@
            service = new RestService();
         }
 
+        private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
         private async void OnCounterClicked(object sender, EventArgs e)
         {
             var service = new RestService();
